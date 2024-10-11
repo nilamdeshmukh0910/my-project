@@ -1,0 +1,38 @@
+<form #taskForm="ngForm" (ngSubmit)="submitForm(taskForm)">
+  <div *ngIf="task" class="mb-3">
+    <label for="title" class="form-label">Task Title</label>
+    <input type="text" class="form-control" id="title" name="title" [(ngModel)]="task.title" required />
+  </div>
+
+  <div *ngIf="task" class="mb-3">
+    <label for="assignedTo" class="form-label">Assigned To</label>
+    <input type="text" class="form-control" id="assignedTo" name="assignedTo" [(ngModel)]="task.assignedTo" required />
+  </div>
+
+  <div *ngIf="task" class="mb-3">
+    <label for="status" class="form-label">Status</label>
+    <select class="form-select" id="status" name="status" [(ngModel)]="task.status" required>
+      <option *ngFor="let status of statusOptions" [value]="status">{{ status }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="task" class="mb-3">
+    <label for="dueDate" class="form-label">Due Date</label>
+    <input type="date" class="form-control" id="dueDate" name="dueDate" [(ngModel)]="task.dueDate" />
+  </div>
+
+  <div *ngIf="task" class="mb-3">
+    <label for="priority" class="form-label">Priority</label>
+    <select class="form-select" id="priority" name="priority" [(ngModel)]="task.priority" required>
+      <option *ngFor="let priority of priorityOptions" [value]="priority">{{ priority }}</option>
+    </select>
+  </div>
+
+  <div *ngIf="task" class="mb-3">
+    <label for="description" class="form-label">Description</label>
+    <textarea class="form-control" id="description" name="description" [(ngModel)]="task.description" rows="3"
+      required></textarea>
+  </div>
+
+  <button type="submit" class="btn btn-success">Save Task</button>
+</form>
